@@ -9,6 +9,5 @@ public record LendingInputData(
 
         @NotEmpty(message = "book Id cannot be null or Empty")
         String bookId) {
-
 }
 

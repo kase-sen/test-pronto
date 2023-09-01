@@ -1,6 +1,8 @@
 package config;
 
 
+import com.pronto.library.service.CustomUserDetailsService;
+import com.pronto.library.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

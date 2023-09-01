@@ -43,7 +43,7 @@ public class BookService {
         final Category category = categoryRepository.findCategoryByName(bookCreateInputData.category())
                 .orElseThrow(() ->
                         new ResultNotFoundException(String.format("Not category found for %s ", bookCreateInputData.category())));
-        ;
+
 
         final Book book = Book.builder().
                 author(bookCreateInputData.author()).

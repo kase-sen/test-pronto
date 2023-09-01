@@ -2,7 +2,7 @@ package com.pronto.library.controller;
 
 
 import com.pronto.library.dto.input.LoginInputData;
-import config.AuthService;
+import com.pronto.library.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
