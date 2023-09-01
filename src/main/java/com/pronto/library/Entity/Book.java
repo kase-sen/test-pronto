@@ -1,6 +1,7 @@
-package com.pronto.library.Entity;
+package com.pronto.library.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pronto.library.enums.Category;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,9 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+/**
+ * The type Book.
+ */
 @NoArgsConstructor
 @Data
 @SuperBuilder

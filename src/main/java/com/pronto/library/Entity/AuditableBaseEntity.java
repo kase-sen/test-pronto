@@ -1,4 +1,4 @@
-package com.pronto.library.Entity;
+package com.pronto.library.entity;
 
 import config.EntityAuditListener;
 import jakarta.persistence.*;
@@ -14,6 +14,9 @@ import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
+/**
+ * The type Auditable base entity.
+ */
 @EntityListeners(EntityAuditListener.class)
 @NoArgsConstructor
 @Data
@@ -37,6 +40,9 @@ public abstract class AuditableBaseEntity implements Serializable {
     @LastModifiedBy
     private String modifiedBy;
 
+    /**
+     * Initialize display id.
+     */
     @PrePersist
     public void initializeDisplayId() {
         if (displayId == null) {

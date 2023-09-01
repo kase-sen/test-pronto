@@ -1,10 +1,13 @@
 package com.pronto.library.dto.input;
 
+import com.pronto.library.annotation.ValidISBN;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.ISBN;
 
 
+/**
+ * The type Book create input data.
+ */
 public record BookCreateInputData(
 
         @NotEmpty(message = "Book title cannot be null or Empty")
@@ -13,7 +16,7 @@ public record BookCreateInputData(
         @NotEmpty(message = "Author cannot be null or Empty")
         String author,
 
-        @ISBN(message = "ISBN has to be number value")
+        @ValidISBN(message = "ISBN has to be number value")
         String isbn,
 
         @NotNull(message = "Category be null or Empty")

@@ -1,9 +1,9 @@
 package com.pronto.library.service;
 
-import com.pronto.library.Entity.Book;
-import com.pronto.library.Entity.Category;
-import com.pronto.library.Entity.LendingHistory;
 import com.pronto.library.dto.response.ResponseLendingDto;
+import com.pronto.library.entity.Book;
+import com.pronto.library.entity.LendingHistory;
+import com.pronto.library.enums.Category;
 import com.pronto.library.repositary.BookRepository;
 import com.pronto.library.repositary.LendingRepository;
 import execption.PreConditionFailedException;
@@ -21,6 +21,9 @@ import java.time.Duration;
 import java.time.OffsetDateTime;
 
 
+/**
+ * The type Lending service.
+ */
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -29,6 +32,12 @@ public class LendingService {
     private final BookRepository bookRepository;
     private final LendingRepository lendingRepository;
 
+    /**
+     * Lend book response lending dto.
+     *
+     * @param bookDisplayId the book display id
+     * @return the response lending dto
+     */
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ResponseLendingDto lendBook(final String bookDisplayId) {
 
@@ -49,6 +58,12 @@ public class LendingService {
         return new ModelMapper().map(savedLendingHistory, ResponseLendingDto.class);
     }
 
+    /**
+     * Return book response lending dto.
+     *
+     * @param bookDisplayId the book display id
+     * @return the response lending dto
+     */
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ResponseLendingDto returnBook(final String bookDisplayId) {
 

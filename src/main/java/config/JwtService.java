@@ -15,12 +15,27 @@ import java.util.Date;
 import java.util.Map;
 import java.util.function.Function;
 
+/**
+ * The type Jwt service.
+ */
 @Service
 public record JwtService(String secretKey) {
+    /**
+     * Instantiates a new Jwt service.
+     *
+     * @param secretKey the secret key
+     */
     public JwtService(@Value("${secret}") String secretKey) {
         this.secretKey = secretKey;
     }
 
+    /**
+     * Generate token string.
+     *
+     * @param extraClaims the extra claims
+     * @param username    the username
+     * @return the string
+     */
     public String generateToken(Map<String, Object> extraClaims, String username) {
         return Jwts.builder()
                 .addClaims(extraClaims)
@@ -32,11 +47,24 @@ public record JwtService(String secretKey) {
     }
 
 
+    /**
+     * Extract username string.
+     *
+     * @param token the token
+     * @return the string
+     */
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
 
+    /**
+     * Is token valid boolean.
+     *
+     * @param token       the token
+     * @param userDetails the user details
+     * @return the boolean
+     */
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);

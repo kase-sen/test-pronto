@@ -1,4 +1,4 @@
-package com.pronto.library.Entity;
+package com.pronto.library.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -11,6 +11,9 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
+/**
+ * The type Lending history.
+ */
 @NoArgsConstructor
 @Data
 @SuperBuilder

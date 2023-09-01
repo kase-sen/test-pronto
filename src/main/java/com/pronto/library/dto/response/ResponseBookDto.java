@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.time.OffsetDateTime;
 
+/**
+ * The type Response book dto.
+ */
 @Data
 public class ResponseBookDto {
 

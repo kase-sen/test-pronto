@@ -5,6 +5,9 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
+/**
+ * The type Response lending dto.
+ */
 @Data
 public class ResponseLendingDto {
 

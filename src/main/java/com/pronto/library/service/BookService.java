@@ -1,9 +1,9 @@
 package com.pronto.library.service;
 
-import com.pronto.library.Entity.Book;
-import com.pronto.library.Entity.Category;
 import com.pronto.library.dto.input.BookCreateInputData;
 import com.pronto.library.dto.response.ResponseBookDto;
+import com.pronto.library.entity.Book;
+import com.pronto.library.enums.Category;
 import com.pronto.library.repositary.BookRepository;
 import com.pronto.library.repositary.CategoryRepository;
 import execption.ResultNotFoundException;
@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 /**
  * Holds Book related business functionality operations
  */
-
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -31,8 +30,12 @@ public class BookService {
     private final BookRepository bookRepository;
     private final CategoryRepository categoryRepository;
 
+
     /**
+     * Create book response book dto.
      *
+     * @param bookCreateInputData the book create input data
+     * @return the response book dto
      */
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ResponseBookDto createBook(final BookCreateInputData bookCreateInputData) {
@@ -54,6 +57,11 @@ public class BookService {
         return new ModelMapper().map(savedBook, ResponseBookDto.class);
     }
 
+    /**
+     * Gets all books.
+     *
+     * @return the all books
+     */
     @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
     public Collection<ResponseBookDto> getAllBooks() {
         final Collection<Book> books = bookRepository.findAll();
@@ -62,6 +70,14 @@ public class BookService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Search books collection.
+     *
+     * @param title  the title
+     * @param author the author
+     * @return the collection
+     * @throws ResultNotFoundException the result not found exception
+     */
     @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
     public Collection<ResponseBookDto> searchBooks(String title, String author) throws ResultNotFoundException {
 
