@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,7 +38,7 @@ public class BookService {
      * @param bookCreateInputData the book create input data
      * @return the response book dto
      */
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
     public ResponseBookDto createBook(final BookCreateInputData bookCreateInputData) {
 
         final Category category = categoryRepository.findCategoryByName(bookCreateInputData.category())

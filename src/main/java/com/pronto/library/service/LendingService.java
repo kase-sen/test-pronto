@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -38,7 +39,7 @@ public class LendingService {
      * @param bookDisplayId the book display id
      * @return the response lending dto
      */
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
     public ResponseLendingDto lendBook(final String bookDisplayId) {
 
         if (!StringUtils.hasLength(bookDisplayId)) {
@@ -64,7 +65,7 @@ public class LendingService {
      * @param bookDisplayId the book display id
      * @return the response lending dto
      */
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
     public ResponseLendingDto returnBook(final String bookDisplayId) {
 
         if (!StringUtils.hasLength(bookDisplayId)) {
