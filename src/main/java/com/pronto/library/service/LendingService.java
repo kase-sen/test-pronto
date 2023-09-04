@@ -38,7 +38,7 @@ public class LendingService {
      * @param bookDisplayId the book display id
      * @return the response lending dto
      */
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRED)
     public ResponseLendingDto lendBook(final String bookDisplayId) {
 
         if (!StringUtils.hasLength(bookDisplayId)) {
@@ -64,7 +64,7 @@ public class LendingService {
      * @param bookDisplayId the book display id
      * @return the response lending dto
      */
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRED)
     public ResponseLendingDto returnBook(final String bookDisplayId) {
 
         if (!StringUtils.hasLength(bookDisplayId)) {

@@ -37,7 +37,7 @@ public class BookService {
      * @param bookCreateInputData the book create input data
      * @return the response book dto
      */
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRED)
     public ResponseBookDto createBook(final BookCreateInputData bookCreateInputData) {
 
         final Category category = categoryRepository.findCategoryByName(bookCreateInputData.category())
@@ -62,7 +62,7 @@ public class BookService {
      *
      * @return the all books
      */
-    @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
     public Collection<ResponseBookDto> getAllBooks() {
         final Collection<Book> books = bookRepository.findAll();
         return books.stream()
@@ -78,7 +78,7 @@ public class BookService {
      * @return the collection
      * @throws ResultNotFoundException the result not found exception
      */
-    @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
     public Collection<ResponseBookDto> searchBooks(String title, String author) throws ResultNotFoundException {
 
         final Collection<Book> books = bookRepository.findBookByAuthorContainingOrTitleContaining(author, title).orElseThrow(() ->
